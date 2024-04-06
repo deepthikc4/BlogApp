@@ -2,15 +2,16 @@ const express=require('express');
 const morgan=require('morgan');
 const dotenv=require('dotenv');
 dotenv.config();
+const PORT=process.env.PORT;
+const app=new express();
+app.use(morgan('dev'));
 
 // for deployment
 const path = require('path');
  app.use(express.static(path.join(__dirname,'/build'))); 
 
 
-const PORT=process.env.PORT;
-const app=new express();
-app.use(morgan('dev'));
+
 
 const userRoute=require('./routes/userRoutes');
 const blogRoute=require('./routes/blogRoutes');
